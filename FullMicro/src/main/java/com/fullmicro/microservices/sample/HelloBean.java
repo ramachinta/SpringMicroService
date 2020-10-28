@@ -1,4 +1,4 @@
-package com.fullmicro.demo.sample;
+package com.fullmicro.microservices.sample;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

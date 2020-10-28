@@ -1,4 +1,4 @@
-package com.fullmicro.demo.sample;
+package com.fullmicro.microservices.sample;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
