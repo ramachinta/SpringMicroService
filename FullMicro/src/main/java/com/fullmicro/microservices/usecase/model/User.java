@@ -1,4 +1,4 @@
-package com.fullmicro.microservices.userUsecase.model;
+package com.fullmicro.microservices.usecase.model;
 
 import java.util.Date;
 

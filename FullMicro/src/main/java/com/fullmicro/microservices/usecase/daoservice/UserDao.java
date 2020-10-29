@@ -1,12 +1,13 @@
-package com.fullmicro.microservices.userUsecase.daoservice;
+package com.fullmicro.microservices.usecase.daoservice;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import com.fullmicro.microservices.userUsecase.model.User;
+import com.fullmicro.microservices.usecase.model.User;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -37,7 +38,7 @@ public class UserDao {
 	}
 	
 	public User findUser(int id) {
-		User usr = (User) users.stream().filter(usrId->usrId.getId()==id);
-		return usr;
+		List<User> usr = users.stream().filter(usrId->usrId.getId()==id).collect(Collectors.toList());
+		return usr.get(0);
 	}
 }
