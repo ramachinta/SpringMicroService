@@ -39,6 +39,9 @@ public class UserDao {
 	
 	public User findUser(int id) {
 		List<User> usr = users.stream().filter(usrId->usrId.getId()==id).collect(Collectors.toList());
-		return usr.get(0);
+		if(null!=usr && usr.size()>0)
+			return usr.get(0);
+		else
+			return null;
 	}
 }
