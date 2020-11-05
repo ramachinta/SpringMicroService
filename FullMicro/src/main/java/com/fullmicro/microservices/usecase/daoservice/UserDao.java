@@ -26,6 +26,8 @@ public class UserDao {
 		users.add(new User(3,"Lama",new Date()));
 		users.add(new User(4,"Sama",new Date()));
 		userCountid=users.size()+1;
+		
+System.out.println("testing the component scan22222222222");
 	}
 	
 	public List<User> findAll(){
@@ -43,5 +45,15 @@ public class UserDao {
 			return usr.get(0);
 		else
 			return null;
+	}
+	
+	public boolean deleteUserById(int id) {
+		int size= users.size();
+		List<User> usr = users.stream().filter(usrId->usrId.getId()!=id).collect(Collectors.toList());
+		if(size!=usr.size()) {
+			this.users = usr;
+			return true;
+		} else
+			return false;
 	}
 }

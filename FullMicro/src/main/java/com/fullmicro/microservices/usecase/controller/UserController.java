@@ -2,6 +2,8 @@ package com.fullmicro.microservices.usecase.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,11 +39,22 @@ public class UserController {
 	
 	//@RequestMapping("/saveUser")
 	@PostMapping(path="/saveUser")
-	public ResponseEntity<User> saveUser(@RequestBody User user){
+	public ResponseEntity<User> saveUser(@Valid @RequestBody User user){
 		user= dao.saveUser(user);
 		ResponseEntity<User> ret = ResponseEntity.status(HttpStatus.CREATED).body(user);
 		//ResponseEntity<User> re = ResponseEntity.status(HttpStatus.OK).body(user);
 		return ret;
+	}
+	
+	@RequestMapping("/deleteUser/{id}")
+	public String deleteUserById(@PathVariable int id) throws Exception {
+		boolean usr= dao.deleteUserById(id);
+		System.out.println(usr);
+		if(!usr) {
+			throw new UserNotFoundException("User not found");
+		} else {
+			return "User "+id+" deleted";
+		}
 	}
 
 }
