@@ -18,13 +18,13 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
-	 <repositories>
+	<!--  <repositories>
 	  <repository>
 	    <id>jcenter-snapshots</id>
 	    <name>jcenter</name>
 	    <url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
 	  </repository>
-	</repositories>
+	</repositories>  -->
 	<dependencies>
 	
 		<dependency>
@@ -74,7 +74,6 @@
 		<dependency>
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
-		    <version>1.18.16</version>
 		    <scope>provided</scope>
 		</dependency>
 
@@ -83,18 +82,44 @@
         <artifactId>springfox-swagger2</artifactId>
         <version>3.0.0</version>
     </dependency> -->
-    <dependency>
-  <groupId>io.springfox</groupId>
-  <artifactId>springfox-swagger2</artifactId>
-<!--  <version>3.0.0-SNAPSHOT</version>-->
-</dependency>
-    <dependency>
-        <groupId>io.springfox</groupId>
-        <artifactId>springfox-swagger-ui</artifactId>
-       <!-- <version>2.9.2</version> -->
-    </dependency>
 
 
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-rest-hal-browser</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-to-slf4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jul-to-slf4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -108,34 +133,25 @@
 
 	<dependencyManagement>
 		<dependencies>
-				<!--<dependency>
-			    <groupId>org.springframework.boot</groupId>
-			    <artifactId>spring-boot-starter-web</artifactId>
-			</dependency>	-->
-		    <dependency>
-		    	<groupId>org.springframework.boot</groupId>
-		    	<artifactId>spring-boot-actuator</artifactId>
-		    </dependency>
-    <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-rest-hal-browser -->
-<dependency>
-    <groupId>org.springframework.data</groupId>
-    <artifactId>spring-data-rest-hal-browser</artifactId>
-    <!-- <version>3.3.5.RELEASE</version>-->
-</dependency>
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfor.swagger2</artifactId>
-				<version>1.4.0</version>
-			</dependency>
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox.swagger-ui</artifactId>
-				<version>2.4.0</version>
-			</dependency>
 			<dependency>
 				<groupId>javax.validation</groupId>
 				<artifactId>validation-api</artifactId>
 				<version>2.0.1.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>3.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>3.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>1.18.16</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

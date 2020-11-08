@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Setter@Getter@ToString@AllArgsConstructor@NoArgsConstructor
+@Setter@Getter@ToString@NoArgsConstructor@AllArgsConstructor
 public class User {
 	
 	private Integer id;

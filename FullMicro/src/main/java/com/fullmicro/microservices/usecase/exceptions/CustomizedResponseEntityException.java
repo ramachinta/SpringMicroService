@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.fullmicro.microservices.usecase.miscellaneous.UserNotFoundException;
 
+
 @ControllerAdvice
 @RestController
 public class CustomizedResponseEntityException extends ResponseEntityExceptionHandler {
