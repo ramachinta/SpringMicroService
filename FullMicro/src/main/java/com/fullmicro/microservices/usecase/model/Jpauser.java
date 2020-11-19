@@ -25,12 +25,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class User {
+public class Jpauser {
 
 	@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)//Auto increment
 	//@GeneratedValue(generator = "sequence-generator")
-    /*@GenericGenerator(
+   /* @GenericGenerator(
       name = "sequence-generator",
       strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
       parameters = {
@@ -45,5 +45,7 @@ public class User {
 	private String name;
 	@Past
 	private Date dob;
-
+	
+	@OneToMany(mappedBy = "user")
+	private List<Post> posts;
 }

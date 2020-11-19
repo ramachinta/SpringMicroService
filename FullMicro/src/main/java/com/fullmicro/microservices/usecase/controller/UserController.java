@@ -18,17 +18,17 @@ import com.fullmicro.microservices.usecase.miscellaneous.UserNotFoundException;
 import com.fullmicro.microservices.usecase.model.User;
 
 @RestController
-@RequestMapping("/Jpausers")
+@RequestMapping("/users")
 public class UserController {
 	@Autowired
 	private UserDao dao;
 	
-	@RequestMapping("/getAlJpalUsers")
+	@RequestMapping("/getAllUsers")
 	public List<User> findAllUsers(){
 		return dao.findAll();
 	}
 	
-	@RequestMapping("/findJpaUser/{id}")
+	@RequestMapping("/findUser/{id}")
 	public User findUser(@PathVariable int id) throws Exception {
 		User usr= dao.findUser(id);
 		if(null==usr) {
@@ -38,7 +38,7 @@ public class UserController {
 	}
 	
 	//@RequestMapping("/saveUser")
-	@PostMapping(path="/saveJpaUser")
+	@PostMapping(path="/saveUser")
 	public ResponseEntity<User> saveUser(@Valid @RequestBody User user){
 		user= dao.saveUser(user);
 		ResponseEntity<User> ret = ResponseEntity.status(HttpStatus.CREATED).body(user);
@@ -46,7 +46,7 @@ public class UserController {
 		return ret;
 	}
 	
-	@RequestMapping("/deleteJpaUser/{id}")
+	@RequestMapping("/deleteUser/{id}")
 	public String deleteUserById(@PathVariable int id) throws Exception {
 		boolean usr= dao.deleteUserById(id);
 		System.out.println(usr);

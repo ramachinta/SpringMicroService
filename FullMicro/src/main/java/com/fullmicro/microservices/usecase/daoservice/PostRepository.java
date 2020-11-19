@@ -3,9 +3,9 @@ package com.fullmicro.microservices.usecase.daoservice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.fullmicro.microservices.usecase.model.Jpauser;
+import com.fullmicro.microservices.usecase.model.Post;
 
 @Repository
-public interface UserRepository extends JpaRepository<Jpauser, Integer> {
+public interface PostRepository extends JpaRepository<Post, Integer> {
 
 }
