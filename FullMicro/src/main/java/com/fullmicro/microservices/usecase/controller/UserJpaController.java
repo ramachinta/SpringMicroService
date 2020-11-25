@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,14 +16,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.web.util.UriComponents;
 
 import com.fullmicro.microservices.usecase.daoservice.PostRepository;
 import com.fullmicro.microservices.usecase.daoservice.UserRepository;
 import com.fullmicro.microservices.usecase.miscellaneous.UserNotFoundException;
 import com.fullmicro.microservices.usecase.model.Jpauser;
 import com.fullmicro.microservices.usecase.model.Post;
+import com.fullmicro.microservices.usecase.service.UserService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+
+@Api(tags = "Jpa user repo curd")
 @RestController
 @RequestMapping("/Jpausers")
 public class UserJpaController {
@@ -32,14 +38,18 @@ public class UserJpaController {
 	@Autowired
 	private PostRepository postRepo;
 	
+	@Autowired
+	private UserService service;
+	
 	@RequestMapping("/getAllJpaUsers")
 	public List<Jpauser> findAllUsers(){
-		return repository.findAll();
+		return service.getAllJpaUser();
 	}
 	
 	@RequestMapping("/findJpaUser/{id}")
 	public Optional<Jpauser> findUser(@PathVariable int id) throws Exception {
-		Optional<Jpauser> usr= repository.findById(id);
+		
+		Optional<Jpauser> usr = service.getJpaUser(id);
 		if(usr.isPresent()) {
 			throw new UserNotFoundException("User not found");
 		}
@@ -47,6 +57,8 @@ public class UserJpaController {
 	}
 	
 	//@RequestMapping("/saveUser")
+	@ApiOperation(value =" Save Jpa user entity", notes = "This api submits JPA user entity.",produces = MediaType.APPLICATION_JSON_VALUE)
+	//@ApiResponse(value = {@ApiResponse(code)})
 	@PostMapping(path="/saveJpaUser")
 	public ResponseEntity<Jpauser> saveUser(@Valid @RequestBody Jpauser user){
 		user= repository.save(user);

@@ -1,0 +1,7 @@
+1) Bounded context:- Micro services are nothing but small unit of work which can run independently. 
+While dividing services into multiple micro services we need to identify the boundaries of the each services.
+
+2) Configuration management:- If we are running a microservices application in different environments, There is tons of tons of configuration need to maintain.
+how to simplify these configuration sessions. 
+
+3) Dynamic Scale down and scale up:- We need to dynamically scale up or down services based on usages. 
